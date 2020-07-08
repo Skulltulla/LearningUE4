@@ -7,6 +7,10 @@
 #include "Internationalization/Text.h" // FText
 #include "StringActor.generated.h"
 
+/**
+ * See \UE_4.25\Engine\Source\Runtime\Core\Public\HAL\Platform.h
+ * for some type definitions
+ */
 UCLASS()
 class LEARNINGUE4_API AStringActor : public AActor
 {
