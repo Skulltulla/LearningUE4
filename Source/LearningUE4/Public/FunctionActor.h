@@ -40,6 +40,7 @@ public:
 	// Empty UFUNCTION
 	// - Not exposed to blueprint
 	// - todo
+	// - Some delegates require the callback method to be a UFUNCTION (See MediaPlayer.OnOpened...
 	UFUNCTION()
 	void Beta() 
 	{
@@ -93,27 +94,45 @@ public:
 
 	// Blueprint Pure
 	// - No 'Exec' pins
-	// - Has return value titled 'Return value'
-	// - has no input like the next example, Kappa
+	// - has no input pin like the next example, Kappa
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "LearningUE4 | Functions")
-	bool Iota()
+	void Iota(bool& bOut)
 	{
-		return true;
 	}
 
 	// Blueprint Pure via const Keyword
 	// - has input 'Target' that defaults to 'self'
-	// https://www.tomlooman.com/ue4-ufunction-keywords-explained/
+	// REFERENCE: https://www.tomlooman.com/ue4-ufunction-keywords-explained/
 	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
 	bool Kappa() const
 	{
 		return true;
 	}
 
-	// Lambda
-	// Mu
-	// Nu
-	// Xi
+	// Blueprint Implementable Event (no return value or out param)
+	// - May optionally be implemented in blueprints 
+	// - May be invoked from C++ (no native definition required)
+	// - "Event Lambda" is node title
+	// - Not callable from blueprint without `BlueprintCallable` specifier
+	UFUNCTION(BlueprintImplementableEvent, Category = "LearningUE4 | Functions ")
+	void Lambda();
+
+	// Blueprint Implementable Event (with return value)
+	// - Not an event - creates an overridable function 
+	// - May be invoked from C++ (no native definition required)
+	// - Not callable from blueprint without 'BlueprintCallable` specifier
+	UFUNCTION(BlueprintImplementableEvent, Category = "LearningUE4 | Functions ")
+	bool Mu();
+
+	// Blueprint Implementable Event (with out param)
+	// - Similar to previous example, Mu
+	// - Not an event - creates an overridable function 
+	// - May be invoked from C++ (no native definition required)
+	// - Not callable from blueprint without `BlueprintCallable` specifier
+	UFUNCTION(BlueprintImplementableEvent, Category = "LearningUE4 | Functions")
+	void Nu(bool& bOut);
+
+	// Xi()
 	// Omicron
 	// Pi
 	// Rho

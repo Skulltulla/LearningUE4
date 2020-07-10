@@ -22,6 +22,17 @@ AFunctionActor::~AFunctionActor()
 void AFunctionActor::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	// Invoking "Event Lambda" from C++
+	// "Event Lambda" is in BP_FunctionActor with a print string node
+	Lambda();
+
+	// Invoking the overridable function in blueprint
+	Mu();
+
+	// Invoking the overridable function in blueprint, but this one returns something
+	bool bNu;
+	Nu(bNu);
 }
 
 // Called every frame

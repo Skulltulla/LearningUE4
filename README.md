@@ -14,5 +14,13 @@ UE 4.25
 
 > Contains different UFUNCTION permutations
 
+- /source/public/StringActor.h
+
+> Examples, so far, of wchar_t, TCHAR, TEXT(), FString
+
+- /source/public/DelegateActor.h
+
+> 
+
 
 

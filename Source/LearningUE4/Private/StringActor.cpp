@@ -18,13 +18,13 @@ AStringActor::AStringActor()
 	UE_LOG(LogTemp, Warning, TEXT("%c"), AlphaWCHART);
 
 	bool bWCHART;
-	bWCHART = (AlphaWCHART == AlphaWCHART);		// true
-	bWCHART = (AlphaWCHART == BetaWCHART);		// false
-	bWCHART = (AlphaWCHART == GammaWCHART);		// false
+	bWCHART = (AlphaWCHART == AlphaWCHART);  // true
+	bWCHART = (AlphaWCHART == BetaWCHART);   // false
+	bWCHART = (AlphaWCHART == GammaWCHART);  // false
 
 	const wchar_t AlphaTEXT[] = TEXT("AlphaTEXT");
 	const wchar_t BetaTEXT[9] = TEXT("BetaTEXT"); // [n] = len("")+1
-	const wchar_t GammaTEXT[10] = { TEXT("GammaTEXT") }; // [n] = len("")+1
+	const wchar_t GammaTEXT[10] = { TEXT("GammaTEXT") };
 	// const wchar_t GammaTEXT[2] = { TEXT("Gamma"), TEXT("TEXT") }; // invalid syntax - not equivalent to initializing string[]
 	UE_LOG(LogTemp, Warning, AlphaTEXT);
 
@@ -64,6 +64,7 @@ AStringActor::AStringActor()
 	AlphaInt32 = AlphaFString.Len();
 
 	// todo
+	// Equals - case-sensitive by default
 	bool bAlpha;
 	bAlpha = FString(TEXT("a")) == FString(TEXT("a"));		// true
 	bAlpha = FString(TEXT("a")).Equals(FString(TEXT("a")));	// true
@@ -75,7 +76,7 @@ AStringActor::AStringActor()
 	bAlpha = FString(TEXT("a")).Equals(FString(TEXT("b")));	// false
 
 	// todo
-	// Default: Case-sensitive
+	// Compare - case-sensitive by default
 	// A = U+0041	B = U+0042	Z = U+005A
 	// a = U+0061	b = U+0062	z = U+007A
 	AlphaInt32 = FString(TEXT("a")).Compare(FString(TEXT("a")));	// 0
