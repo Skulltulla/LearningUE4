@@ -33,6 +33,9 @@ void AFunctionActor::BeginPlay()
 	// Invoking the overridable function in blueprint, but this one returns something
 	bool bNu;
 	Nu(bNu);
+
+	// Invoking a blueprint native event (either blueprint xor native definition)
+	Xi();
 }
 
 // Called every frame

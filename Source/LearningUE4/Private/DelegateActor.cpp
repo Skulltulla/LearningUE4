@@ -6,14 +6,29 @@
 // Sets default values
 ADelegateActor::ADelegateActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	/** Inherited Properties */
 	PrimaryActorTick.bCanEverTick = true;
+
+	/** Delegate Actor */
+	AlphaDelegate_Lambda.BindLambda([]() {
+		UE_LOG(LogTemp, Warning, TEXT("AlphaDelegate.BindLambda()"));
+	});
+
+	AlphaDelegate_UObject.BindUObject(this, &ADelegateActor::AlphaUObjectCallback);
 }
 
 // Called when the game starts or when spawned
 void ADelegateActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (AlphaDelegate_Lambda.IsBound())
+	{
+		AlphaDelegate_Lambda.Execute();
+	}
+
+	bool bAlphaRaw = AlphaDelegate_Raw.ExecuteIfBound();
+	bool bAlphaUObject = AlphaDelegate_UObject.ExecuteIfBound();
 }
 
 // Called every frame
