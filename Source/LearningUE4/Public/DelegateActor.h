@@ -1,14 +1,52 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+/**
+# Delegates 
+	Reflection: No
 
+	DECLARE_DELEGATE
+	DECLARE_DELEGATE_***Param(s)
+	DECLARE_DELEGATE_RetVal
+	DECLARE_DELEGATE_RetVal_***Param(s)
+	// Bind***: Lambda, Raw, SP, Static, ThreadSafeSP, UFunction, or UObject
+	// Execute, ExecuteIfBound
+
+	DECLARE_MULTICAST_DELEGATE
+	DECLARE_MULTICAST_DELEGATE_***Param(s)
+	// Add***: FSingleDelegate, Lambda, Raw, SP, Static, ThreadSafeSP, UFunction, or UObject
+	// Broadcast()
+
+# Dynamic Delegates
+	Reflection: Yes
+
+	DECLARE_DYNAMIC_DELEGATE
+	DECLARE_DYNAMIC_DELEGATE_***Param(s)
+	DECLARE_DYNAMIC_DELEGATE_RetVal
+	DECLARE_DYNAMIC_DELEGATE_RetVal_***Param(s)
+	// BindUFunction (only)
+	// Execute, ExecuteIfBound
+	// Specifiers
+	//	- BlueprintReadWrite
+	//	  - Use "Set ***" to assign a custom event, etc
+	//	  - Use "Get ***" and assign it to other delegates like a callback
+	//	- EditAnywhere had no effect, it stayed read only in Class Defaults
+	//	- VisibleAnywhere didn't negate BlueprintReadWrite, but allows it to be visible in Class Defaults
+	//	x BlueprintCallable ( multicast delegates only )
+	//	x BlueprintAssignable ( multicast delegates only )
+	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_***Param(s)
+	// Add/AddUnique(FScriptDelegate) (only); NOTE: FScriptDelegate may only be bound to a UFunction
+	// Broadcast(); NOTE: There is no "Broadcast" method in blueprint, use BlueprintCallable and "Call MyMulticastDelegateName" to broadcast.
+
+ # Events:
+	DECLARE_EVENT
+	DECLARE_EVENT_***Param(s)
+ */
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "DelegateActor.generated.h"
 
-/**
- * # Delegate
- */
 DECLARE_DELEGATE(/** typename */ FAlphaDelegate)
 DECLARE_DELEGATE_OneParam(FBetaDelegate, /** param type */ bool)
 // _TwoParams, _ThreeParams, _FourParams, _FiveParams, _SixParams, _SevenParams, _EightParams, _NineParams
@@ -17,35 +55,22 @@ DECLARE_DELEGATE_RetVal(/** return type */ bool, FGammaDelegate)
 DECLARE_DELEGATE_RetVal_OneParam(bool, FDeltaDelegate, bool)
 // _TwoParams, _ThreeParams, _FourParams, _FiveParams, _SixParams, _SevenParams, _EightParams, _NineParams
 
-// UDELEGATE( /** UFUNCTION Specifiers */ )
-// DECLARE_DELEGATE(FEpsiloneDelegate)
+DECLARE_MULTICAST_DELEGATE(FAlphaMulticastDelegate)
+DECLARE_MULTICAST_DELEGATE_OneParam(FBetaMulticastDelegate, bool)
+// _TwoParams, _ThreeParams, _FourParams, _FiveParams, _SixParams, _SevenParams, _EightParams, _NineParams
 
-/**
- * # Dynamic Delegate
- * - Reflection 
- * - BindUFunction is only option
- * - Specifiers
- *   - BlueprintReadWrite
- *     - Use "Set ***" to assign delegate instance to a custom event, etc.
- *     - Use "Get ***" and assign it to other delegates like a callback
- *   - EditAnywhere had no effect, it stayed read only in Class Defaults
- *   - VisibleAnywhere didn't negate BlueprintReadWrite, but allows it to be visible in Class Defaults
- *   x BlueprintCallable ( multicast delegates only )
- *   x BlueprintAssignable ( multicast delegates only )
- */
+// TODO
+// UDELEGATE( /** UFUNCTION Specifiers */ )
+// DECLARE_DELEGATE_DYNAMIC_***(...)
+
 DECLARE_DYNAMIC_DELEGATE(FAlphaDynamicDelegate);
 // _OneParam, _TwoParams, ..., _NineParams
 // _RetVal, _RetVal_OneParam, _RetVal_TwoParams, ..., _RetVal_NineParams
 
-/**
- * # Dynamic Multicast Delegate
- * - Instead of Bind, there is Add/AddUnique
- * - Instead of Execute, there is Broadcast()
- * - There is no "Broadcast" method in blueprint, use BlueprintCallable and "Call MyMulticastDelegateName" to broadcast.
- */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAlphaDynamicMulticastDelegate);
 // _OneParam, _TwoParams, ..., _NineParams
 
+// TODO
 // DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE(/** Sparse Delegate Class */, /** OwningClass */, FAlphaDynamicMulticastSparseDelegate)
 // _OneParam, _TwoParams, ..., _NineParams
 
@@ -65,23 +90,6 @@ class LEARNINGUE4_API ADelegateActor : public AActor
 public:
 	DECLARE_DELEGATE(FEtaDelegate)
 
-	// Blueprint:
-	// - Type: Delegate
-	// - Value = Default__DelegateActor.AlphaDynamicCallback
-	// C++ UFUNCTION AlphaDynamicCallback is bound to this
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "LearningUE4 | Delegates")
-	FAlphaDynamicDelegate AlphaDynamicDelegate;
-
-	// In blueprint this is assigned to AlphaDynamicDelegate
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "LearningUE4 | Delegates")
-	FAlphaDynamicDelegate BetaDynamicDelegate;
-
-	// C++ UFUNCTION AlphaDynamicMulticastCallback is bound to this in the constructor
-	// a custom blueprint event is bound to this
-	UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, Category = "LearningUE4 | Delegates")
-	FAlphaDynamicMulticastDelegate AlphaDynamicMulticastDelegate;
-
-private:
 	// See constructor for bindings
 	FAlphaDelegate AlphaDelegate_Lambda;
 	FAlphaDelegate AlphaDelegate_Raw;
@@ -95,8 +103,33 @@ private:
 
 	FEtaDelegate EtaDelegate;
 
+	// todo
+	FAlphaMulticastDelegate AlphaMulticastDelegate_Simple;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_Lambda;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_Raw;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_SP;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_Static;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_ThreadSafeSP;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_UFunction;
+	FAlphaMulticastDelegate AlphaMulticastDelegate_UObject;
+
+	// The C++ UFUNCTION AlphaDynamicCallback is bound to this in the constructor
+	// Blueprint:
+	// - Type: Delegate
+	// - Value = Default__DelegateActor.AlphaDynamicCallback
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "LearningUE4 | Delegates")
+	FAlphaDynamicDelegate AlphaDynamicDelegate;
+
+	// Assigned to `AlphaDynamicDelegate` in Blueprint
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "LearningUE4 | Delegates")
+	FAlphaDynamicDelegate BetaDynamicDelegate;
+
+	// The C++ UFUNCTION AlphaDynamicMulticastCallback is bound to this 
+	// in the constructor and a custom Blueprint event is also bound to this
+	UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, Category = "LearningUE4 | Delegates")
+	FAlphaDynamicMulticastDelegate AlphaDynamicMulticastDelegate;
+
 public:	
-	// Sets default values for this actor's properties
 	ADelegateActor();
 	~ADelegateActor();
 

@@ -17,10 +17,19 @@ ADelegateActor::ADelegateActor()
 	// todo
 	/** Invalid : You cannot use raw method delegates with UObjects  */
 	// AlphaDelegate_Raw.BindRaw(this, &ADelegateActor::AlphaRawCallback);
-
 	AlphaDelegate_Static.BindStatic(&ADelegateActor::AlphaStaticCallback);
 	AlphaDelegate_UFunction.BindUFunction(this, FName("AlphaUFunctionCallback"));
 	AlphaDelegate_UObject.BindUObject(this, &ADelegateActor::AlphaUObjectCallback);
+
+	// todo
+	// AlphaMulticastDelegate_Simple.Add()
+	// AlphaMulticastDelegate_Lambda.AddLambda();
+	// AlphaMulticastDelegate_Raw.AddRaw();
+	// AlphaMulticastDelegate_SP.AddSP();
+	// AlphaMulticastDelegate_Static.AddStatic();
+	// AlphaMulticastDelegate_ThreadSafeSP.AddThreadSafeSP();
+	// AlphaMulticastDelegate_UFunction.AddUFunction();
+	// AlphaMulticastDelegate_UObject.AddUObject();
 
 	AlphaDynamicDelegate.BindUFunction(this, FName("AlphaDynamicCallback"));
 
