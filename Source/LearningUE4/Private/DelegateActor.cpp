@@ -11,17 +11,26 @@ ADelegateActor::ADelegateActor()
 
 	/** Delegate Actor */
 	AlphaDelegate_Lambda.BindLambda([]() {
-		UE_LOG(LogTemp, Warning, TEXT("AlphaDelegate.BindLambda()"));
+		UE_LOG(LogTemp, Warning, TEXT("ADelegateActor::AlphaLambdaCallback()"));
 	});
 
+	// todo
 	/** Invalid : You cannot use raw method delegates with UObjects  */
 	// AlphaDelegate_Raw.BindRaw(this, &ADelegateActor::AlphaRawCallback);
 
 	AlphaDelegate_Static.BindStatic(&ADelegateActor::AlphaStaticCallback);
-
 	AlphaDelegate_UFunction.BindUFunction(this, FName("AlphaUFunctionCallback"));
-
 	AlphaDelegate_UObject.BindUObject(this, &ADelegateActor::AlphaUObjectCallback);
+
+	AlphaDynamicDelegate.BindUFunction(this, FName("AlphaDynamicCallback"));
+
+	FScriptDelegate AlphaScriptDelegate; // todo : may not want this to be local
+	AlphaScriptDelegate.BindUFunction(this, FName("AlphaDynamicMulticastCallback"));
+	AlphaDynamicMulticastDelegate.AddUnique(AlphaScriptDelegate);
+}
+
+ADelegateActor::~ADelegateActor()
+{
 }
 
 // Called when the game starts or when spawned
@@ -38,6 +47,14 @@ void ADelegateActor::BeginPlay()
 	bAlpha = AlphaDelegate_UObject.ExecuteIfBound();
 	bAlpha = AlphaDelegate_UFunction.ExecuteIfBound();
 	bAlpha = AlphaDelegate_Static.ExecuteIfBound();
+
+	AlphaDynamicDelegate.ExecuteIfBound();
+
+	AlphaDynamicMulticastDelegate.Broadcast();
+}
+
+void ADelegateActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
 }
 
 // Called every frame
