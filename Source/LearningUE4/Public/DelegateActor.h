@@ -9,6 +9,9 @@
 
 DECLARE_DELEGATE(/** typename */ FAlphaDelegate)
 
+/**
+ *
+ */
 UCLASS()
 class LEARNINGUE4_API ADelegateActor : public AActor
 {
@@ -33,6 +36,17 @@ private:
 	void AlphaUObjectCallback()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("ADelegateActor::AlphaUObjectCallback()"));
+	}
+
+	UFUNCTION()
+	void AlphaUFunctionCallback()
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ADelegateActor::AlphaUFunctionCallback()"));
+	}
+
+	static void AlphaStaticCallback()
+	{
+		UE_LOG(LogTemp, Warning, TEXT("ADelegateActor::AlphaStaticCallback()"));
 	}
 
 public:	

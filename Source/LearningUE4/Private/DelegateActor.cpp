@@ -14,6 +14,13 @@ ADelegateActor::ADelegateActor()
 		UE_LOG(LogTemp, Warning, TEXT("AlphaDelegate.BindLambda()"));
 	});
 
+	/** Invalid : You cannot use raw method delegates with UObjects  */
+	// AlphaDelegate_Raw.BindRaw(this, &ADelegateActor::AlphaRawCallback);
+
+	AlphaDelegate_Static.BindStatic(&ADelegateActor::AlphaStaticCallback);
+
+	AlphaDelegate_UFunction.BindUFunction(this, FName("AlphaUFunctionCallback"));
+
 	AlphaDelegate_UObject.BindUObject(this, &ADelegateActor::AlphaUObjectCallback);
 }
 
@@ -27,8 +34,10 @@ void ADelegateActor::BeginPlay()
 		AlphaDelegate_Lambda.Execute();
 	}
 
-	bool bAlphaRaw = AlphaDelegate_Raw.ExecuteIfBound();
-	bool bAlphaUObject = AlphaDelegate_UObject.ExecuteIfBound();
+	bool bAlpha = AlphaDelegate_Raw.ExecuteIfBound();
+	bAlpha = AlphaDelegate_UObject.ExecuteIfBound();
+	bAlpha = AlphaDelegate_UFunction.ExecuteIfBound();
+	bAlpha = AlphaDelegate_Static.ExecuteIfBound();
 }
 
 // Called every frame
