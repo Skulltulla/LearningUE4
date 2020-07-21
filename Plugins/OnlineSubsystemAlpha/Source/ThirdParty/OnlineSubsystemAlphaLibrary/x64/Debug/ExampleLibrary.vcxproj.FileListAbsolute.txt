@@ -1,0 +1,2 @@
+D:\src\Peacock\LearningUE4\Plugins\OnlineSubsystemAlpha\Source\ThirdParty\OnlineSubsystemAlphaLibrary\x64\Debug\ExampleLibrary.dll
+D:\src\Peacock\LearningUE4\Plugins\OnlineSubsystemAlpha\Source\ThirdParty\OnlineSubsystemAlphaLibrary\x64\Debug\ExampleLibrary.pdb
