@@ -9,7 +9,6 @@ ARegexpActor::ARegexpActor()
 {
 	UE_LOG(LogTemp, Warning, TEXT("ARegexpActor"));
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 void ARegexpActor::PostInitProperties()

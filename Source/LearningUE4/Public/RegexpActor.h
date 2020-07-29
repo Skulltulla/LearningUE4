@@ -20,12 +20,12 @@ class LEARNINGUE4_API ARegexpActor : public AActor
 	
 public:
 	// The string to parse
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LearningUE4|Regex")
-	FString InputString;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(Multiline=true), Category = "LearningUE4|Regex")
+	FString InputString = TEXT("The quick brown fox jumps over the lazy dog.");
 
 	// The regex to use on InputString
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LearningUE4|Regex")
-	FString RegexPatternString;
+	FString RegexPatternString = TEXT("^T");
 
 public:	
 	// Sets default values for this actor's properties
