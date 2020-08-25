@@ -107,8 +107,8 @@ FLoopRunnable* FLoopRunnable::Create()
 	}
 
 	UE_LOG(LogThreads, Warning, TEXT("FLoopRunnable()::Create() - Creating FLoopRunnable()"));
-	FLoopRunnable* pLoopRunnable = new FLoopRunnable();
-	return pLoopRunnable;
+	FLoopRunnable* LoopRunnablePtr = new FLoopRunnable();
+	return LoopRunnablePtr;
 }
 
 // Sets default values
@@ -132,18 +132,18 @@ void ARunnableActor::Tick(float DeltaTime)
 
 void ARunnableActor::StartRunnable()
 {
-	if (pLoopRunnable == nullptr)
+	if (LoopRunnablePtr == nullptr)
 	{
-		pLoopRunnable = FLoopRunnable::Create();
+		LoopRunnablePtr = FLoopRunnable::Create();
 	}
-	pLoopRunnable->StartRunnable();
+	LoopRunnablePtr->StartRunnable();
 }
 
 void ARunnableActor::StopRunnable()
 {
-	if (pLoopRunnable)
+	if (LoopRunnablePtr)
 	{
-		pLoopRunnable->StopRunnable();
+		LoopRunnablePtr->StopRunnable();
 	}
 }
 

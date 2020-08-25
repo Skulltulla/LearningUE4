@@ -32,18 +32,18 @@ public:
 
 	// Do not explicitly call this
 	// it will automatically be invoked when an instance of pRunnableThread is created
-	virtual bool Init();
+	virtual bool Init() override;
 
 	// Do not explicitly call this
 	// it will automatically be invoked if Init() was successful.
-	virtual uint32 Run();
+	virtual uint32 Run() override;
 
 	// Do not explicitly call this - thread early termination
-	virtual void Stop();
+	virtual void Stop() override;
 
 	// Do not expicitly call this
 	// it will automatically be invoked after Run() returns.
-	virtual void Exit();
+	virtual void Exit() override;
 
 public:
 	/** FLoopRunnable Interface */
@@ -72,10 +72,10 @@ public:
 
 	~ARunnableActor()
 	{
-		if (pLoopRunnable)
+		if (LoopRunnablePtr)
 		{
-			pLoopRunnable->StopRunnable(); 
-			// delete pLoopRunnable;
+			LoopRunnablePtr->StopRunnable(); 
+			// delete LoopRunnablePtr;
 		}
 	}
 
@@ -95,5 +95,5 @@ public:
 	void StopRunnable();
 
 private:
-	FLoopRunnable* pLoopRunnable = nullptr;
+	FLoopRunnable* LoopRunnablePtr = nullptr;
 };

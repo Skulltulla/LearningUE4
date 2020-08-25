@@ -19,7 +19,7 @@ AAssetActor::AAssetActor()
 	/** Asset Actor */
 
 	// Find T_Alpha from T_ALPHA_REFERENCE 
-	ConstructorHelpers::FObjectFinder<UTexture> AlphaTextureFinder(T_ALPHA_REFERENCE);
+	const ConstructorHelpers::FObjectFinder<UTexture> AlphaTextureFinder(T_ALPHA_REFERENCE);
 	if (AlphaTextureFinder.Succeeded())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Found T_Alpha as UTexture"));
@@ -27,7 +27,7 @@ AAssetActor::AAssetActor()
 	}
 	
 	// Find T_Alpha from T_ALPHA_REFERENCE_2 
-	ConstructorHelpers::FObjectFinder<UTexture2D> AlphaTexture2DFinder(T_ALPHA_REFERENCE_2);
+	const ConstructorHelpers::FObjectFinder<UTexture2D> AlphaTexture2DFinder(T_ALPHA_REFERENCE_2);
 	if (AlphaTexture2DFinder.Succeeded())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Found T_Alpha as UTexture2D"));
