@@ -47,9 +47,10 @@ The first line of an XML file:
 ### proguardAdditions
 
     <root xmlns:android="https://schemas.android.com/apk/res/android">
-      <insert>
-        // todo
-      </insert>
+        <proguardAdditions>
+	    <insert>
+	    </insert>
+	</proguardAdditions>
     </root>
    
 ### resourceCopies
