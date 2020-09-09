@@ -83,6 +83,18 @@ public:
 	{
 		bArg = true;
 	}
+	
+	// ref parameter
+	// - appears on input side of a blueprint node
+	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
+	void Eta2( UPARAM(ref) bool& bArg )
+	{
+	}
+	
+	// Invalid attempt of pass by reference
+	// Compiler Error: "cannot have exposed pointer to this type"
+	// UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
+	// void Eta3(bool* bArg){}
 
 	// Parameter Custom Display Name
 	// - Has return value with title of DisplayName
