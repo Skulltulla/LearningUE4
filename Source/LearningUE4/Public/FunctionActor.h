@@ -86,6 +86,7 @@ public:
 	
 	// ref parameter
 	// - appears on input side of a blueprint node
+	// - UObjects and AActors must use * instead of &
 	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
 	void Eta2( UPARAM(ref) bool& bArg )
 	{
