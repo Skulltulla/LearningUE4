@@ -1,4 +1,33 @@
-# _APL.xml
+# _APL.xml | _UPL.xml
+
+## Resources
+
+UnrealPluginLanguage.cs has a block comment with plenty of details and it contains the code
+that parses these files.
+
+    ...\UE_VERSION\Engine\Source\Programs\UnrealBuildTool\System\UnrealPluginLanguage.cs
+
+## About
+
+A file that may exist in the same location as the plugin's Build.cs. To use the file, Build.cs is updated by adding it as a receipt property.
+
+## Build.cs | Config Rules 
+
+    public Title(ReadOnlyTargetRules Target) : base(Target)
+    {
+        // ...
+
+        if( Target.Platform == UnrealTargetPlatform.Android )
+        {
+            string name = "Untitled"
+            string TitleAplPath = ModuleDirectory + "/TITLE_APL.xml";
+    	    AdditionalPropertiesForReceipt.Add("Untitled", TitleAplPath);
+        }
+    }
+
+# Content
+
+## xml version
 
 The first line of an XML file:
 
@@ -52,7 +81,7 @@ The first line of an XML file:
 	    </insert>
 	</proguardAdditions>
     </root>
-   
+
 ### resourceCopies
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
@@ -60,7 +89,7 @@ The first line of an XML file:
           // copyFile, copyDir
       </resourceCopies>
     </root>
-    
+
 ## Gradle
 
 ### gradleCopies
@@ -70,7 +99,6 @@ The first line of an XML file:
           // copyFile, copyDir
       </gradleCopies>
     </root>
-
 
 ### gradleProperties
 
@@ -101,7 +129,7 @@ The first line of an XML file:
         </insert>
       </buildGradleAdditions>
     </root>
-    
+
 ### settingsGradleAdditions
 
     <root xmlns:android="https://schemas.android.com/apk/res/android">
@@ -126,34 +154,35 @@ The first line of an XML file:
       <gameActivityImportAdditions>
       </gameActivityImportAdditions>
     </root>
-    
+
 ### gameActivityClassAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityClassAdditions>
       </gameActivityClassAdditions>
     </root>
-    
+
 ### gameActivityReadMetadataAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityReadMetadataAdditions>
       </gameActivityReadMetadataAdditions>
     </root>
-    
+
 ### gameActivityOnCreateAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnCreateAdditions>
       </gameActivityOnCreateAdditions>
     </root>
-    
+
 ### gameActivityOnStartAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnStartAdditions>
       </gameActivityOnStartAdditions>
     </root>
+
     
 ### gameActivityOnResumeAdditions
 
@@ -161,35 +190,35 @@ The first line of an XML file:
       <gameActivityOnResumeAdditions>
       </gameActivityOnResumeAdditions>
     </root>
-    
+
 ### gameActivityOnPauseAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnPauseAdditions>
       </gameActivityOnPauseAdditions>
     </root>
-    
+
 ### gameActivityOnStopAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnStopAdditions>
       </gameActivityOnStopAdditions>
     </root>
-    
+
 ### gameActivityOnDestroyAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnDestroyAdditions>
       </gameActivityOnDestroyAdditions>
     </root>
-    
+
 ### gameActivityOnActivityResultAdditions
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityOnActivityResultAdditions>
       </gameActivityOnActivityResultAdditions>
     </root>
-    
+
 ### gameActivityOverrideAPKOBBPackaging
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
@@ -318,4 +347,110 @@ Newline
 Value
 
     <insertValue value="KEY=VALUE" />
+
+# Combined
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <root xmlns:android="https://schemas.android.com/apk/res/android">
+        <init>
+        </init>
+
+        <androidManifestUpdates>
+            <addPermission android:name="android.permission." />
+            <addFeature android:name="android." android:required="false" />
+            <addAttribute tag="manifest" name="android:" value="" />
+            <addElements tag="application">
+                <meta-data android:name="com.example.package" android:value="optional" />
+                <meta-data android:name="com.example.package" android:value="required" />
+            </addElements>
+        </androidManifestUpdate>
+
+        <prebuildCopies>
+            // copyFile, copyDir
+        </prebuildCopies>
+
+        <proguardAdditions>
+            <insert>
+            </insert>
+        </proguardAdditions>
+
+        <resourceCopies>
+            // copyFile, copyDir
+        </resourceCopies>
+
+        <!-- GRADLE -->
+
+        <gradleCopies>
+            // copyFile, copyDir
+        </gradleCopies>
+
+        <gradleProperties>
+        </gradleProperties>
+
+        <baseBuildGradleAdditions>
+            // insert, insertValue, etc
+        </baseBuildGradleAdditions>
+
+        <buildGradleAdditions>
+            <insert>
+                dependencies {
+                    implementation('...')
+                }
+            </insert>
+            <insert>
+                dependencies.implementation(name: '', ext: '')
+            </insert>
+        </buildGradleAdditions>
+
+        <settingsGradleAdditions>
+            <insert>
+            </insert>
+        </settingsGradleAdditions>
+
+        <!-- GAME ACTIVITY -->
+
+        <gameActivityBeforeConfigRulesAppliedAdditions>
+        </gameActivityBeforeConfigRulesAppliedAdditions>
+
+        <gameActivityImportAdditions>
+        </gameActivityImportAdditions>
+
+        <gameActivityClassAdditions>
+        </gameActivityClassAdditions>
+
+        <gameActivityReadMetadataAdditions>
+        </gameActivityReadMetadataAdditions>
+
+        <gameActivityOnCreateAdditions>
+        </gameActivityOnCreateAdditions>
+
+        <gameActivityOnStartAdditions>
+        </gameActivityOnStartAdditions>
+
+        <gameActivityOnResumeAdditions>
+        </gameActivityOnResumeAdditions>
+
+        <gameActivityOnPauseAdditions>
+        </gameActivityOnPauseAdditions>
+
+        <gameActivityOnStopAdditions>
+        </gameActivityOnStopAdditions>
+
+        <gameActivityOnDestroyAdditions>
+        </gameActivityOnDestroyAdditions>
+
+        <gameActivityOnActivityResultAdditions>
+        </gameActivityOnActivityResultAdditions>
+
+        <gameActivityOverrideAPKOBBPackaging>
+        </gameActivityOverrideAPKOBBPackaging>
+
+        <soLoadLibrary>
+            <loadLibrary name="" failmsg="" />
+        </soLoadLibrary>
+    </root>
+
+# References
+
+[1] Epic Games, Inc. "Android Configuration Rules System" [Online]. Available: https://docs.unrealengine.com/en-US/Platforms/Mobile/Android/AndroidConfigRulesSystem/index.html
 

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root xmlns="https://schemas.android.com/apk/res/android">
+    
+    <init>
+        <log text="LearnAndroidJNI_APL.xml <init>" />
+    </init>
+    
+   <androidManifestUpdates>
+       <!-- <addPermission android:name="android.permission" /> -->
+       <!-- <addFeature android:name="android.permission" android:required="false" /> -->
+       
+       <addElements tag="application">
+           <!-- <meta-data android:name="com.example.package" android:value="optional" /> -->
+           <!-- <meta-data android:name="com.example.package" android:value="required" /> -->
+       </addElements>
+       
+       <prebuildCopies>
+       </prebuildCopies>
+
+       <!-- PROGUARD -->
+       <proguardAdditions>
+       </proguardAdditions>
+
+       <!-- RESOURCES -->
+       <resourceCopies>
+       </resourceCopies>
+       
+       <!-- GRADLE -->
+       <gradleCopies>
+       </gradleCopies>
+
+       <gradleProperties>
+       </gradleProperties>
+       
+       <baseBuildGradleAdditions>
+       </baseBuildGradleAdditions>
+       
+       <buildGradleAdditions>
+           <insert>
+           </insert>
+       </buildGradleAdditions>
+       
+       <settingsGradleAdditions>
+       </settingsGradleAdditions>
+       
+       <!-- GAME ACTIVITY -->
+       <gameActivityBeforeConfigRulesAppliedAdditions>
+       </gameActivityBeforeConfigRulesAppliedAdditions>
+
+       <gameActivityImportAdditions>
+       </gameActivityImportAdditions>
+
+       <gameActivityClassAdditions>
+       </gameActivityClassAdditions>
+
+       <gameActivityReadMetadataAdditions>
+       </gameActivityReadMetadataAdditions>
+
+       <gameActivityOnCreateAdditions>
+       </gameActivityOnCreateAdditions>
+
+       <gameActivityOnStartAdditions>
+       </gameActivityOnStartAdditions>
+
+       <gameActivityOnResumeAdditions>
+       </gameActivityOnResumeAdditions>
+
+       <gameActivityOnPauseAdditions>
+       </gameActivityOnPauseAdditions>
+
+       <gameActivityOnStopAdditions>
+       </gameActivityOnStopAdditions>
+
+       <gameActivityOnDestroyAdditions>
+       </gameActivityOnDestroyAdditions>
+
+       <gameActivityOnActivityResultAdditions>
+       </gameActivityOnActivityResultAdditions>
+
+       <gameActivityOverrideAPKOBBPackaging>
+       </gameActivityOverrideAPKOBBPackaging>
+       
+       <!-- LIBRARIES -->
+       <!--
+       <soLoadLibrary>
+           <loadLibrary name="" failmsg="" />
+       </soLoadLibrary>
+       -->
+   </androidManifestUpdates> 
+</root>

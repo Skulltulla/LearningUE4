@@ -1,22 +1,23 @@
 # Design Notes
 
 ## Files
-### PLUGINTITLE_APL.xml
-A file that exists in the same location as the plugin's Build.cs. To use the file, Build.cs is updated by adding it as a receipt property.
 
-todo:
+### TITLE_APL.xml | TITLE_UPL.xml
+
+> See `Notes/_APL/README.md`
+
+# todo
 - minimal content required
-- GameActivity.java additions, etc
 
-```
-    <gameActivityImportAdditions>
-        <insert></insert>
-    </gameActivityImportAdditions>
+# Resources
 
-    <gameActivityClassAdditions>
-        <insert></insert>
-    </gameActivityClassAdditions>
-```
+    $ `../Engine/Source`> grep -Ril "androidthunk_java"
+    ./Runtime/Advertising/Android/AndroidAdvertising/AndroidAdvertising_APL.xml
+    ./Runtime/ApplicationCore/Private/Android/AndroidApplication.cpp
+    ./Runtime/Launch/Private/Android/AndroidJNI.cpp
+    ./Runtime/Launch/Public/Android/AndroidJNI.h
+    ./Runtime/WebBrowser/Private/Android/AndroidCookieManager.cpp
+    ./ThirdParty/Vivox/vivox-sdk/VivoxCoreSDK_UPL.xml
 
-References:
+# References
 - https://stackoverflow.com/questions/40153299/use-apl-android-programming-language-to-make-android-plugin-to-unreal-engine-4
