@@ -25,11 +25,23 @@ A file that may exist in the same location as the plugin's Build.cs. To use the 
         }
     }
 
-NOTE: The other `Add` method which takes a new ReceiptProperty object was deprecated.
+> NOTE: The other `Add` method which takes a new ReceiptProperty object was deprecated.
 
-NOTE: If the file path is invalid, then a package error will occur to indicate it.
+> NOTE: If the file path is invalid, then a package error will occur to indicate it.
+
+> NOTE: Other source files used the Name "AndroidPlugin".
 
 # Content
+
+## CDATA
+
+Some data is encapsulated in a CDATA block, which prevents its content from being parsed.
+
+    <![CDATA[
+    // java code
+    ]]>
+
+- https://en.wikipedia.org/wiki/CDATA
 
 ## xml version
 
@@ -163,6 +175,11 @@ The first line of an XML file:
 
     <root xmlns="android"https:schemas.android.com/apk/res/android">
       <gameActivityClassAdditions>
+        <insert>
+<![CDATA[
+        // java code
+]]>
+        </insert>
       </gameActivityClassAdditions>
     </root>
 

@@ -63,7 +63,7 @@
 **source**
 
     #if PLATFORM_ANDROID
-      // jni = FAndroidApplication::GetJavaEnv(true);
+      // jni = FAndroidApplication::GetJavaEnv();
       FJavaWrapper::CallVoidMethod(jni, FJavaWrapper::GameActivityThis, AndroidThunkJava_UntitledMethod);
     #endif
 
