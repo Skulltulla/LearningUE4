@@ -7,20 +7,19 @@
 - Methods:
   - `FAndroidApplication::GetJavaEnv -> JNIEnv*`
 
-
 **.Build.cs**
 
     PrivateDependencyModuleNames.AddRange(new string[] {
         "ApplicationCore"
     });
 
-**.h**
+**header**
 
     #if PLATFORM_ANDROID
       #include "Android/AndroidApplication.h"
     #endif
 
-**.cpp**
+**source**
 
     #if PLATFORM_ANDROID
       JNIEnv* jni = FAndroidApplication::GetJavaEnv();
@@ -49,16 +48,19 @@
 
     if(Target.Platform == UnrealTargetPlatform.Android)
     {
-        "Launch"
+        PrivateDependencyModuleNames.AddRange(new string[]{
+            "Launch"
+        });
+        // ...
     }
 
-**.h**
+**header**
 
     #if PLATFORM_ANDROID
       #include "Android/AndroidJNI.h"
     #endif
 
-**.cpp**
+**source**
 
     #if PLATFORM_ANDROID
       // jni = FAndroidApplication::GetJavaEnv(true);
@@ -75,18 +77,12 @@
 - `jfieldID`
 - `jmethodID`
 - ...
-
 - `jboolean`
 - ...
-
 - `jint`
 - ...
-
 - `jfloat`
 - `jfloatArray`
 - ...
-
 - `jstring`
 - ...
-
-
