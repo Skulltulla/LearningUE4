@@ -20,4 +20,7 @@
     ./ThirdParty/Vivox/vivox-sdk/VivoxCoreSDK_UPL.xml
 
 # References
+
 - https://stackoverflow.com/questions/40153299/use-apl-android-programming-language-to-make-android-plugin-to-unreal-engine-4
+- http://static.appstore.picovr.com/docs/JarUnreal/chapter_five.html
+

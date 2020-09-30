@@ -25,6 +25,10 @@ A file that may exist in the same location as the plugin's Build.cs. To use the 
         }
     }
 
+NOTE: The other `Add` method which takes a new ReceiptProperty object was deprecated.
+
+NOTE: If the file path is invalid, then a package error will occur to indicate it.
+
 # Content
 
 ## xml version

@@ -7,6 +7,25 @@
 - Methods:
   - `FAndroidApplication::GetJavaEnv -> JNIEnv*`
 
+
+**.Build.cs**
+
+    PrivateDependencyModuleNames.AddRange(new string[] {
+        "ApplicationCore"
+    });
+
+**.h**
+
+    #if PLATFORM_ANDROID
+      #include "Android/AndroidApplication.h"
+    #endif
+
+**.cpp**
+
+    #if PLATFORM_ANDROID
+      JNIEnv* jni = FAndroidApplication::GetJavaEnv();
+    #endif
+
 ## FJavaWrapper
 - Module:	Launch
 - Path:		`\Engine\Source\Runtime\Launch\Public\Android\AndroidJNI.h`
@@ -25,6 +44,26 @@
   - `::CallLongMethod`
   - `::CallFloatMethod`
   - `::CallDoubleMethod`
+
+**.Build.cs**
+
+    if(Target.Platform == UnrealTargetPlatform.Android)
+    {
+        "Launch"
+    }
+
+**.h**
+
+    #if PLATFORM_ANDROID
+      #include "Android/AndroidJNI.h"
+    #endif
+
+**.cpp**
+
+    #if PLATFORM_ANDROID
+      // jni = FAndroidApplication::GetJavaEnv(true);
+      FJavaWrapper::CallVoidMethod(jni, FJavaWrapper::GameActivityThis, AndroidThunkJava_UntitledMethod);
+    #endif
 
 ## TODO
 - `#include "jni.h"`
