@@ -48,20 +48,20 @@ invoke the method via JNI.
         JNIEnv* jni = FAndroidApplication::GetJavaEnv();
         // JNIEnv* jni = AndroidJavaEnv::GetJavaEnv(); // alternative 
 
-	if( jni )
-	{
-	  static jmethodID VoidAlphaID = FJavaWrapper::FindMethod(
-	      /** JNIEnv* */ jni, 
-	      /** jclass */ FJavaWrapper::GameActivityClassID, 
-	      /** const ANSICHAR* */ "AndroidThunkJava_VoidAlpha", 
-	      /** Method Signature */ "()V", 
-	      /** bOptional */ false);
+        if( jni )
+        {
+            static jmethodID VoidAlphaID = FJavaWrapper::FindMethod(
+                /** JNIEnv* */ jni, 
+                /** jclass */ FJavaWrapper::GameActivityClassID, 
+                /** const ANSICHAR* */ "AndroidThunkJava_VoidAlpha", 
+                /** Method Signature */ "()V", 
+                /** bOptional */ false);
 
-	  if( VoidAlphaID )
-	  {
-	      FJavaWrapper::CallVoidMethod(/** JNIEnv* */ jni, /** jobject */ FJavaWrapper::GameActivityThis, /** jmethodID */ VoidAlphaID);
-	  }
-	}
+            if( VoidAlphaID )
+            {
+                FJavaWrapper::CallVoidMethod(/** JNIEnv* */ jni, /** jobject */ FJavaWrapper::GameActivityThis, /** jmethodID */ VoidAlphaID);
+            }
+        }
         #endif
     }
 
