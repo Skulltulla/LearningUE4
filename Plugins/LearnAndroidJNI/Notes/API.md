@@ -47,6 +47,7 @@ See `AndroidJavaEnv` for alternative way of getting `JNIEnv*`.
   - `::CallLongMethod`
   - `::CallFloatMethod`
   - `::CallDoubleMethod`
+  - `::CallBooleanMethod`
 
 **.Build.cs**
 
