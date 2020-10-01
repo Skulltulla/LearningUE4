@@ -7,19 +7,23 @@
 - Methods:
   - `FAndroidApplication::GetJavaEnv -> JNIEnv*`
 
+**Remarks**
+
+See `AndroidJavaEnv` for alternative way of getting `JNIEnv*`.
+
 **.Build.cs**
 
     PrivateDependencyModuleNames.AddRange(new string[] {
         "ApplicationCore"
     });
 
-**header**
+**Include**
 
     #if PLATFORM_ANDROID
       #include "Android/AndroidApplication.h"
     #endif
 
-**source**
+**Source**
 
     #if PLATFORM_ANDROID
       JNIEnv* jni = FAndroidApplication::GetJavaEnv();
@@ -54,22 +58,50 @@
         // ...
     }
 
-**header**
+**Include**
 
     #if PLATFORM_ANDROID
       #include "Android/AndroidJNI.h"
     #endif
 
-**source**
+**Source**
 
     #if PLATFORM_ANDROID
       // jni = FAndroidApplication::GetJavaEnv();
       FJavaWrapper::CallVoidMethod(jni, FJavaWrapper::GameActivityThis, AndroidThunkJava_UntitledMethod);
     #endif
 
-## TODO
-- `#include "jni.h"`
-- `\Engine\Source\Runtime\Core\Public\Android\AndroidJavaEnv.h`
+## AndroidJavaEnv
+- Module: Core
+- Include: `#include "Android/AndroidJavaEnv.h"`
+- Location: `..\Engine\Source\Runtime\Core\Public\Android\AndroidJavaEnv.h`
+
+**Remarks**
+
+See `FAndroidApplication` for alternative way of getting `JNIEnv*`. The following method
+of obtaining an instance of `JNIEnv*` was used in the following source files and it also worked
+in a new project.
+
+    ./Runtime/ApplicationCore/Private/Android/AndroidApplication.cpp
+    ./Runtime/ApplicationCore/Public/Android/AndroidApplication.h
+    ./Runtime/Core/Private/Android/AndroidJava.cpp
+    ./Runtime/Core/Private/Android/AndroidJavaEnv.cpp
+    ./Runtime/Core/Private/Android/AndroidPlatformMisc.cpp
+    ./Runtime/Core/Private/Android/AndroidPlatformProcess.cpp
+
+**Build.cs**
+
+The `Core` module was automatically included in `PublicDependencyModuleNames` when a new project was made.
+
+**Include**
+
+    #if PLATFORM_ANDROID
+        #include "Android/AndroidJavaEnv.h"
+    #endif
+
+**Source**
+
+    JNIEnv* jni = AndroidJavaEnv::GetJavaEnv();
 
 ## Types
 - `jclass`
