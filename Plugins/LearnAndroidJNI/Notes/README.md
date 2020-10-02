@@ -9,17 +9,9 @@
 # todo
 - minimal content required
 
-# Resources
-
-    $ `../Engine/Source`> grep -Ril "androidthunk_java"
-    ./Runtime/Advertising/Android/AndroidAdvertising/AndroidAdvertising_APL.xml
-    ./Runtime/ApplicationCore/Private/Android/AndroidApplication.cpp
-    ./Runtime/Launch/Private/Android/AndroidJNI.cpp
-    ./Runtime/Launch/Public/Android/AndroidJNI.h
-    ./Runtime/WebBrowser/Private/Android/AndroidCookieManager.cpp
-    ./ThirdParty/Vivox/vivox-sdk/VivoxCoreSDK_UPL.xml
-
 # References
+
+1. Oracle, "Chapter 3: JNI Types and Data Structures" [Online]. Available: https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/types.html
 
 - https://stackoverflow.com/questions/40153299/use-apl-android-programming-language-to-make-android-plugin-to-unreal-engine-4
 - http://static.appstore.picovr.com/docs/JarUnreal/chapter_five.html
