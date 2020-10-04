@@ -108,20 +108,6 @@ The `Core` module was automatically included in `PublicDependencyModuleNames` wh
     #endif
 
 ## Types
-- Module: Engine
-
-**Build.cs**
-
-    PublicDependencyModuleNames.AddRange( new string[]{
-        // ...
-        "Engine"
-	// ...
-    });
-
-> NOTE: The `Engine` module was automatically added to a Project's Build.cs, but not to a new Plugin's Build.cs.
-
-**Types**
-
 - `jclass`
 - `jobject`
 - `jfieldID`
