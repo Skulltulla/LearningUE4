@@ -31,6 +31,8 @@ A file that may exist in the same location as the plugin's Build.cs. To use the 
 
 > NOTE: Other source files used the Name "AndroidPlugin".
 
+> NOTE: If this is a Plugin's Builds.cs file, then `ModuleDirectory` will refer to its module directory.
+
 # Content
 
 ## CDATA

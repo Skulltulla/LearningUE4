@@ -65,6 +65,11 @@ After an instance is created, it may be passed as one of the variadic arguments 
     jstring JString = jni->NewStringUTF( CString );
 
     // FString > jstring
+    FString UnrealString;
+    jstring JString = jni->NewStringUTF( TCHAR_TO_UTF8(*UnrealString) );
+
+    // TODO
+    // FString > jstring
     // @FJavaHelper : See AndroidJavaEnv.h
     // FString UnrealString;
     // jstring JString = FJavaHelper::ToJavaString(jni, UnrealString);

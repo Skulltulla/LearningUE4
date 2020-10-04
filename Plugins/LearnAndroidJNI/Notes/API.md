@@ -33,8 +33,9 @@ See `AndroidJavaEnv` for alternative way of getting `JNIEnv*`.
 - Module:	Launch
 - Path:		`\Engine\Source\Runtime\Launch\Public\Android\AndroidJNI.h`
 - Include:	`#include "Android/AndroidJNI.h`
-- Members:
-  - `FJavaWrapper::GameActivityThis`
+- Some static members:
+  - `::GameActivityClassID` may be passed to FJavaWrapper::FindMethod, etc
+  - `::GameActivityThis` may be passed to FJavaWrapper::Call...Method, etc
 - Some static methods:
   - `::FindClass`
   - `::FindClassGlobalRef`
@@ -68,7 +69,7 @@ See `AndroidJavaEnv` for alternative way of getting `JNIEnv*`.
 **Source**
 
     #if PLATFORM_ANDROID
-      // jni = FAndroidApplication::GetJavaEnv();
+      // jni = ...GetJavaEnv();
       FJavaWrapper::CallVoidMethod(jni, FJavaWrapper::GameActivityThis, AndroidThunkJava_UntitledMethod);
     #endif
 
@@ -102,20 +103,35 @@ The `Core` module was automatically included in `PublicDependencyModuleNames` wh
 
 **Source**
 
+    #if PLATFORM_ANDROID
     JNIEnv* jni = AndroidJavaEnv::GetJavaEnv();
+    #endif
 
 ## Types
+- Module: Engine
+
+**Build.cs**
+
+    PublicDependencyModuleNames.AddRange( new string[]{
+        // ...
+        "Engine"
+	// ...
+    });
+
+> NOTE: The `Engine` module was automatically added to a Project's Build.cs, but not to a new Plugin's Build.cs.
+
+**Types**
+
 - `jclass`
 - `jobject`
 - `jfieldID`
 - `jmethodID`
-- ...
 - `jboolean`
-- ...
 - `jint`
-- ...
 - `jfloat`
 - `jfloatArray`
-- ...
 - `jstring`
-- ...
+
+https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/types.html
+
+
