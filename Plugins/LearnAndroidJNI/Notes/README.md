@@ -2,10 +2,11 @@
 
 ## Content
 
-- [api](/Plugins/LearnAndroidJNI/Notes/api.md)
+- [api](/Plugins/LearnAndroidJNI/Notes/API.md)
 - [apl](/Plugins/LearnAndroidJNI/Notes/apl.md)
 - [jtypes](/Plugins/LearnAndroidJNI/Notes/jtypes.md)
 - [functions](/Plugins/LearnAndroidJNI/Notes/functions.md)
+- [issues](/Plugins/LearnAndroidJNI/Notes/z_issues.md)
 
 ## References
 
