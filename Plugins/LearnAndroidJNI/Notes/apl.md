@@ -21,7 +21,7 @@ A file that may exist in the same location as the plugin's Build.cs. To use the 
         {
             string name = "Untitled"
             string TitleAplPath = ModuleDirectory + "/TITLE_APL.xml";
-    	    AdditionalPropertiesForReceipt.Add("Untitled", TitleAplPath);
+                AdditionalPropertiesForReceipt.Add("Untitled", TitleAplPath);
         }
     }
 
@@ -52,189 +52,189 @@ Some data is encapsulated in a CDATA block, which prevents its content from bein
     <root xmlns:android="https://schemas.android.com/apk/res/android">
         <!-- once per architecture -->
         <init>
-	    <log text="MyAndroidPlugin Init" />
+            <log text="MyAndroidPlugin Init" />
         </init>
 
-	<!-- #################### Android Archive Library #################### -->
-	<!--
+        <!-- #################### Android Archive Library #################### -->
+        <!--
         <AARImports>
-	</AARImports>
-	-->
+        </AARImports>
+        -->
         
         <!-- #################### PROGUARD #################### -->
-	<!--
+        <!--
         <proguardAdditions>
-	</proguardAdditions>
-	-->
+        </proguardAdditions>
+        -->
         
         <!-- #################### Manifest #################### -->
         <androidManifestUpdates>
-	    <!--
-	    <addPermission android:name="android.permission." />
-	    -->
-
-	    <!--
-	    <addFeature android:name="android." android:required="false" />
-	    -->
-
-	    <!--
-	    <addAttribute tag="manifest" name="android:" value="" />
-	    -->
-
-	    <!--
-	    <addElements tag="application">
-	        <meta-data android:name="com.example.package" android:value="optional" />
-	        <meta-data android:name="com.example.package" android:value="required" />
-	    </addElements>
-	    -->
-	</androidManifestUpdates>
+            <!--
+            <addPermission android:name="android.permission." />
+            -->
+            
+            <!--
+            <addFeature android:name="android." android:required="false" />
+            -->
+            
+            <!--
+            <addAttribute tag="manifest" name="android:" value="" />
+            -->
+            
+            <!--
+            <addElements tag="application">
+                <meta-data android:name="com.example.package" android:value="optional" />
+                <meta-data android:name="com.example.package" android:value="required" />
+            </addElements>
+            -->
+        </androidManifestUpdates>
         
-	<!-- #################### Gradle ####################  -->
-	<!--
+        <!-- #################### Gradle ####################  -->
+        <!--
         <gradleCopies>
-	    <log text="copyFile, copyDir, etc" />
-	</gradleCopies>
-	-->
+            <log text="copyFile, copyDir, etc" />
+        </gradleCopies>
+        -->
         
-	<!--
+        <!--
         <gradleProperties>
-	</gradleProperties>
-	-->
+        </gradleProperties>
+        -->
         
-	<!--
+        <!--
         <gradleParameters>
-	</gradleParameters>
-	-->
+        </gradleParameters>
+        -->
         
-	<!--
+        <!--
         <baseBuildGradleAdditions>
-	    <log text="insert, insertValue, etc" />
-	</baseBuildGradleAdditions>
-	-->
+            <log text="insert, insertValue, etc" />
+        </baseBuildGradleAdditions>
+        -->
 
         <!--
         <buildGradleAdditions>
-	    <insert>
-	    dependencies{
-	        implementation('...')
-	    }
-	    </insert>
-	    <insert>
-	        dependencies.implementation(name: '', ext: '')
-	    </insert>
-	</buildGradleAdditions>
-	-->
+        <insert>
+            dependencies{
+                implementation('...')
+            }
+        </insert>
+        <insert>
+            dependencies.implementation(name: '', ext: '')
+        </insert>
+        </buildGradleAdditions>
+        -->
 
         <!--
         <buildscriptGradleAdditions>
-	</buildscriptGradleAdditions>
-	-->
+        </buildscriptGradleAdditions>
+        -->
         
         <!--
         <buildXmlPropertyAdditions>
-	</buildXmlPropertyAdditions>
-	-->
+        </buildXmlPropertyAdditions>
+        -->
         
         <!--
         <prebuildCopies>
-	    <log text="copyFile, copyDir, etc" />
-	</prebuildCopies>
-	-->
+            <log text="copyFile, copyDir, etc" />
+        </prebuildCopies>
+        -->
         
         <!--
         <resourceCopies>
-	    <log text="copyFile, copyDir, etc" />
-	</resourceCopies>
-	-->
+            <log text="copyFile, copyDir, etc" />
+        </resourceCopies>
+        -->
         
-	<!--
+        <!--
         <minimumSDKAPI>
-	</minimumSDKAPI>
-	-->
+        </minimumSDKAPI>
+        -->
         
-	<!-- #################### GAME ACTIVITY #################### -->
+        <!-- #################### GAME ACTIVITY #################### -->
         <!--
         <gameActivityReadMetadata>
-	</gameActivityReadMetadata>
-	-->
+        </gameActivityReadMetadata>
+        -->
         
         <gameActivityImportAdditions>
-	<insert>
-	    <!-- import android.util.Log; -->
-	</insert>
-	</gameActivityImportAdditions>
+        <insert>
+            <!-- import android.util.Log; -->
+        </insert>
+        </gameActivityImportAdditions>
         
         <!--
         <gameActivityPostImportAdditions>
-	</gameActivityPostImportAdditions>
-	-->
+        </gameActivityPostImportAdditions>
+        -->
         
         <!--
         <gameActivityImplementsAdditions>
-	</gameActivityImplementsAdditions>
-	-->
+        </gameActivityImplementsAdditions>
+        -->
         
         <!--
         <gameActivityClassAdditions>
-	<insert>
-	<![CDATA[
-	    // Java Code
-	]]>
-	</insert>
-	</gameActivityOnClassAdditions>
-	-->
+        <insert>
+        <![CDATA[
+            // Java Code
+        ]]>
+        </insert>
+        </gameActivityOnClassAdditions>
+        -->
         
         <!--
         <gameActivityOnCreateAdditions>
-	</gameActivityOnCreateAdditions>
-	-->
+        </gameActivityOnCreateAdditions>
+        -->
         
         <!--
         <gameActivityOnDestroyAdditions>
-	</gameActivityOnDestroyAdditions>
-	-->
+        </gameActivityOnDestroyAdditions>
+        -->
         
         <!--
         <gameActivityOnStartAdditions>
-	</gameActivityOnStartAdditions>
-	-->
+        </gameActivityOnStartAdditions>
+        -->
         
         <!--
         <gameActivityOnStopAdditions>
-	</gameActivityOnStopAdditions>
-	-->
+        </gameActivityOnStopAdditions>
+        -->
         
         <!--
         <gameActivityOnPauseAdditions>
-	</gameActivityOnPauseAdditions>
-	-->
+        </gameActivityOnPauseAdditions>
+        -->
         
         <!--
         <gameActivityOnResumeAdditions>
-	</gameActivityOnResumeAdditions>
-	-->
+        </gameActivityOnResumeAdditions>
+        -->
         
         <!--
         <gameActivityOnNewIntentAdditions>
-	</gameActivityOnNewIntentAdditions>
-	-->
+        </gameActivityOnNewIntentAdditions>
+        -->
         
         <!--
         <gameActivityOnActivityResultAdditions>
-	</gameActivityOnActivityResultAdditions>
-	-->
+        </gameActivityOnActivityResultAdditions>
+        -->
 
-	<!--
-	<gameActivityOverrideAPKOBBPackaging>
-	</gameActivityOverrideAPKOBBPackaging>
-	-->
+        <!--
+        <gameActivityOverrideAPKOBBPackaging>
+        </gameActivityOverrideAPKOBBPackaging>
+        -->
         
-	<!-- #################### SO LIBRARY #################### -->
-	<!--
+        <!-- #################### SO LIBRARY #################### -->
+        <!--
         <soLoadLibrary>
-	    <loadLibrary name="" failmsg="" />
-	</soLoadLibrary>
-	-->
+            <loadLibrary name="" failmsg="" />
+        </soLoadLibrary>
+        -->
     </root>
 
 # References
