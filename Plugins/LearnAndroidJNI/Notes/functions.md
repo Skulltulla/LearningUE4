@@ -18,7 +18,7 @@ A void method with no parameters.
 The function name was prefixed with `AndroidThunkJava_` to follow the same naming convention as what is
 found in the Unreal Engine source files.
 
-A `jmethodID` for `AndroidThunkJava_Alpha` will be retrieved for using `FJavaWrapper::FindMethod` and
+A `jmethodID` for `AndroidThunkJava_VoidAlpha` will be retrieved using `FJavaWrapper::FindMethod` and
 it will be passed to `FJavaWrapper::CallVoidMethod`.
 
 The game activity class is identified via `FJavaWrapper::GameActivityClassID`, which is of the type `jclass`,
