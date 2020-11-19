@@ -17,10 +17,6 @@
 		{
 			"Name": "LearnThirdPartyLibrary",
 			"Enabled": false
-		},
-		{
-			"Name": "RiderLink",
-			"Enabled": true
 		}
 	]
 }
