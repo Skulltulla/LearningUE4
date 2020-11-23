@@ -2,36 +2,30 @@
 
 using UnrealBuildTool;
 
-public class LearnAssets : ModuleRules
+public class LearnSettings : ModuleRules
 {
-	public LearnAssets(ReadOnlyTargetRules Target) : base(Target)
+	public LearnSettings(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
 		PublicIncludePaths.AddRange( new string[] {
-		});
+        });
 		PrivateIncludePaths.AddRange( new string[] {
-		});
+        });
 			
 		PublicDependencyModuleNames.AddRange( new string[] {
-			"AssetTools",
-			// #include "AssetTypeCategories.h"
-			//		EAssetTypeCategories 
-			
-			"Core",
-			
-			"UnrealEd"
-			// #include "Factories/Factory.h"
-			//		UFactory
-		});
+            "Core",
+            "Settings",
+            //      ISettingsModule #include "ISettingsModule.h"
+        });
 		PrivateDependencyModuleNames.AddRange( new string[] {
-			"CoreUObject",
-			"Engine",
-			"Slate",
-			"SlateCore",
-		});
+            "CoreUObject",
+            "Engine",
+            "Slate",
+            "SlateCore",
+        });
 		
 		DynamicallyLoadedModuleNames.AddRange( new string[] {
-		});
+        });
 	}
 }

@@ -17,11 +17,13 @@ void ARegexpActor::PostInitProperties()
 	UpdateDependentVariables();
 }
 
+#if WITH_EDITOR
 void ARegexpActor::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
 	UpdateDependentVariables();
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 }
+#endif
 
 void ARegexpActor::UpdateDependentVariables()
 {
