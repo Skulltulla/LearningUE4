@@ -1,5 +1,7 @@
 # Learn Settings
 
+Alternatively, use UDeveloperSettings.
+
 **ULearnSettingsSettings**
 
 Uses UCLASS and UPROPERTY specifiers to configure custom settings that will be stored in DefaultGame.ini
