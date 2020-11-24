@@ -1,8 +1,10 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "LearnSettings.h"
-#include "ISettingsModule.h"
 #include "LearnSettingsSettings.h"
+#if WITH_EDITOR
+#include "ISettingsModule.h"
+#endif
 
 #define LOCTEXT_NAMESPACE "FLearnSettingsModule"
 
@@ -25,6 +27,7 @@ void FLearnSettingsModule::ShutdownModule()
 
 void FLearnSettingsModule::RegisterToProjectSettings()
 {
+#if WITH_EDITOR
 	ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings");
 	if (SettingsModule)
 	{
@@ -36,15 +39,18 @@ void FLearnSettingsModule::RegisterToProjectSettings()
 			TEXT_SETTINGS_DESCRIPTION, 
 			GetMutableDefault<ULearnSettingsSettings>());
 	}
+#endif
 }
 
 void FLearnSettingsModule::UnregisterFromProjectSettings()
 {
+#if WITH_EDITOR
 	ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings");
 	if (SettingsModule)
 	{
 		SettingsModule->UnregisterSettings(NAME_PROJECT, NAME_PLUGIN, NAME_LEARNSETTINGS);
 	}
+#endif
 }
 
 #undef LOCTEXT_NAMESPACE

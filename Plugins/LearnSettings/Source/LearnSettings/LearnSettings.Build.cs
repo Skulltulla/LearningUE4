@@ -6,18 +6,30 @@ public class LearnSettings : ModuleRules
 {
 	public LearnSettings(ReadOnlyTargetRules Target) : base(Target)
 	{
+		//
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
+		//
+		bool IsTargetTypeEditor = Target.Type == TargetRules.TargetType.Editor;
+		
+		//
 		PublicIncludePaths.AddRange( new string[] {
         });
 		PrivateIncludePaths.AddRange( new string[] {
         });
 			
+		//
 		PublicDependencyModuleNames.AddRange( new string[] {
             "Core",
-            "Settings",
-            //      ISettingsModule #include "ISettingsModule.h"
         });
+		if (IsTargetTypeEditor)
+		{
+			PrivateDependencyModuleNames.AddRange(new string[]
+			{
+				"Settings",
+				//	ISettingsModule (LearnSettings)
+			});
+		}
 		PrivateDependencyModuleNames.AddRange( new string[] {
             "CoreUObject",
             "Engine",
@@ -25,6 +37,7 @@ public class LearnSettings : ModuleRules
             "SlateCore",
         });
 		
+		//
 		DynamicallyLoadedModuleNames.AddRange( new string[] {
         });
 	}
