@@ -3,7 +3,7 @@
 #include "AlphaGameInstanceSubsystem.h"
 
 #if PLATFORM_ANDROID
-#include "Android/AndroidJNI.h
+#include "Android/AndroidJNI.h"
 #include "Android/AndroidApplication.h"
 #include "jni.h"
 #endif

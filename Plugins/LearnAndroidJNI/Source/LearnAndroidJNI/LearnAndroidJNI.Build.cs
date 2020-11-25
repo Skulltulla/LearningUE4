@@ -7,6 +7,7 @@ public class LearnAndroidJNI : ModuleRules
 	public LearnAndroidJNI(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+		bool IsTargetTypeAndroid = Target.Platform == UnrealTargetPlatform.Android;
 		
 		PublicIncludePaths.AddRange( new string[] {
         });
@@ -27,9 +28,10 @@ public class LearnAndroidJNI : ModuleRules
             
             "ApplicationCore"
         });
-		if( Target.Platform == UnrealTargetPlatform.Android ) 
+		if( IsTargetTypeAndroid )
 		{
-			PrivateDependencyModuleNames.AddRange( new string[] {
+			PrivateDependencyModuleNames.AddRange( new string[] 
+			{
                 "Launch"
             });
         }

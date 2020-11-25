@@ -22,13 +22,24 @@ AStringActor::AStringActor()
 	bWCHART = (AlphaWCHART == BetaWCHART);   // false
 	bWCHART = (AlphaWCHART == GammaWCHART);  // false
 
+#if !PLATFORM_ANDROID
+	// TODO
+	// Error: Initializing wide char array with incompatible wide string literal
 	const wchar_t AlphaTEXT[] = TEXT("AlphaTEXT");
-	const wchar_t BetaTEXT[9] = TEXT("BetaTEXT"); // [n] = len("")+1
-	const wchar_t GammaTEXT[10] = { TEXT("GammaTEXT") };
-	// const wchar_t GammaTEXT[2] = { TEXT("Gamma"), TEXT("TEXT") }; // invalid syntax - not equivalent to initializing string[]
 	UE_LOG(LogTemp, Warning, AlphaTEXT);
+	
+	const wchar_t BetaTEXT[9] = TEXT("BetaTEXT"); // [n] = len("")+1
 
-	// todo
+	// TODO
+	// ERROR: Cannot initialize an array element of type 'const wchar_t' with
+	// an lvalue of type 'const char16_t [10]'
+	const wchar_t GammaTEXT[10] = { TEXT("GammaTEXT") };
+#endif
+	
+	// Invalid syntax - not equivalent to initializing string[]
+	// const wchar_t GammaTEXT[2] = { TEXT("Gamma"), TEXT("TEXT") }; 
+
+	// TODO
 	// NOTE: I'm not sure if it is recommended to use TCHAR directly; it's not in the documentation
 	const TCHAR AlphaTCHAR = 'a';
 	const TCHAR BetaTCHAR = 'b';
