@@ -41,18 +41,24 @@ void ULearnSQLiteCoreBPLibrary::Alpha()
         UE_LOG(LogLearnSQLiteCore, Warning, TEXT("Creating table Alpha"));
         const TCHAR* SqlCreateTableAlpha = TEXT("CREATE TABLE Alpha(a0 INT PRIMARY KEY NOT NULL, a1 TEXT)");
         const int64 RowsEnumerated = db.Execute(SqlCreateTableAlpha);
+
+        const TCHAR* SqlInsertAlphaRow1 = TEXT("INSERT INTO Alpha(a0, a1) VALUES(1, 'Alpha')");
+        const TCHAR* SqlInsertAlphaRow2 = TEXT("INSERT INTO Alpha(a0, a1) VALUES(2, 'Beta')");
+
+        db.Execute(SqlInsertAlphaRow1);
+        db.Execute(SqlInsertAlphaRow2);
         
         // Execute (2/n)
-        // @note: Data was populated with external database editor
         // @note: If the query result was empty, the callback was not executed, i.e. an empty table.
         UE_LOG(LogLearnSQLiteCore, Warning, TEXT("Executing 'SELECT * FROM Alpha'..."));
+        TArray<int8> OutRowIds; // Captured by reference in the callback for later use once execution completes
         const TCHAR* SqlSelectAllFromAlpha = TEXT("SELECT * FROM Alpha");
-        const int64 RowsEnumerated2 = db.Execute( SqlSelectAllFromAlpha, [](const FSQLitePreparedStatement& InStatement)
+        const int64 RowsEnumerated2 = db.Execute( SqlSelectAllFromAlpha, [&OutRowIds](const FSQLitePreparedStatement& InStatement)
         {
             // @return ESQLitePreparedStatementExecuteRowResult (Continue, Stop, Error)
             // @note Stop does not return an error
             // @note Error also stops
-                
+
             const TArray<FString>& ColumnNames = InStatement.GetColumnNames();
             UE_LOG(LogTemp, Warning, TEXT("ColumnNames:"));
             for(const FString& ColumnName : ColumnNames )
@@ -85,12 +91,27 @@ void ULearnSQLiteCoreBPLibrary::Alpha()
             //      TArray<uint8>
             //      FGuid
             // Reference: SQLitePreparedStatement.h line 228 to 281
+            
             int8 OutValueInt8;
-            bool GetColumnValueByIndexResult = InStatement.GetColumnValueByIndex(/** column index */ 0, OutValueInt8);
-            // ...
+            const bool GetColumnValueByIndexResult = InStatement.GetColumnValueByIndex(/** column index */ 0, OutValueInt8);
+            if( GetColumnValueByIndexResult )
+            {
+                OutRowIds.Add(OutValueInt8);
+            }
             
             return ESQLitePreparedStatementExecuteRowResult::Continue;
         });
+        UE_LOG(LogLearnSQLiteCore, Warning, TEXT("Execution completed..."));
+
+        // Process OutRowIds
+        UE_LOG(LogLearnSQLiteCore, Warning, TEXT("Processing OutRowIds..."));
+        if( RowsEnumerated2 > 0 )
+        {
+            for( int8 id : OutRowIds )
+            {
+                UE_LOG(LogLearnSQLiteCore, Warning, TEXT("\tUsing row id %d to do stuff"), id);
+            }
+        }
 
         const FString LastError = db.GetLastError();
         UE_LOG(LogLearnSQLiteCore, Warning, TEXT("Last Error: %s"), *LastError);
