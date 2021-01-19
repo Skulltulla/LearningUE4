@@ -1,11 +1,11 @@
-# Animation | 00002 | Anim Bone Cube
+# Animation | 0002 | Anim Bone Cube
 
 ## 0002_AnimBoneCube.blend
 
 The BoneCube.blend file was duplicated using the Save As operation before proceeding to animate the cube.
 
 - The **Armature** object was selected and **Pose Mode** was activated.
-- They Timeline's End frame was decreased from 250 to 32
+- The Timeline's End frame was decreased from 250 to 32
 - A new keyframe was created at frame 1 using the Armature's unmodified transform
 - A new keyframe was created at frame 16 after rotating the Armature on the Z axis 90 degrees.
 - A new keyframe was created at frame 32 after resetting the Armature's rotation.

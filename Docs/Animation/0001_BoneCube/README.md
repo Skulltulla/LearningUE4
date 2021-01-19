@@ -25,9 +25,7 @@ It has a **Physics Asset** property that was auto assigned to **Cube_PhysicsAsse
 
 ## BoneCube_Skeleton (Skeleton)
 
-Contains the bone hierarchy information. There is a single bone titled "Bone".
-
-TODO: Is it possible to influence what the bone name will be?
+Contains the bone hierarchy information. There is a single bone titled "Bone", which is the Object's name in Blender.
 
 ## BoneCube_PhysicsAsset (Physics Asset)
 
