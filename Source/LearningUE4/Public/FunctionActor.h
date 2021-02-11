@@ -31,7 +31,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	// C++ Only
+	// No reflection macro
 	// - Not exposed to blueprints
 	void Alpha() 
 	{
@@ -46,7 +46,7 @@ public:
 	{
 	}
 
-	// No compiler error, but not exposed to blueprints
+	// No compiler error like UPROPERTY, but not exposed to blueprints
 	UFUNCTION(Category = "LearningUE4 | Functions")
 	void Gamma() 
 	{
@@ -68,8 +68,8 @@ public:
 	{
 	}
 
-	// Function Return Value
-	// Has a boolean return value titled "Return Value"
+	// Return Value
+	// - Has a boolean return value titled "Return Value"
 	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
 	bool Zeta() 
 	{
@@ -77,7 +77,7 @@ public:
 	}
 
 	// Out Param
-	// Has a boolean return value titled "Arg"
+	// - Has a boolean return value titled "Arg"
 	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
 	void Eta(/** OUT */ bool& bArg)
 	{
@@ -105,6 +105,7 @@ public:
 	{
 	}
 
+	// Blueprint Pure 1/3
 	// Blueprint Pure without const keyword
 	// - No 'Exec' pins
 	// - has no input pin without const keyword (see next examples)
@@ -116,6 +117,7 @@ public:
 		bOut = bAlpha;
 	}
 
+	// Blueprint Pure 2/3
 	// Blueprint Pure with const keyword
 	// - has input 'Target' that defaults to 'self' (similar to Kappa)
 	// - throws compile error if a member is modified
@@ -126,6 +128,7 @@ public:
 		bOut = bAlpha;
 	}
 
+	// Blueprint Pure 3/3
 	// Blueprint Pure via const keyword, but without specifier
 	// - has input 'Target' that defaults to 'self'
 	// - throws compile error if a member is modified
@@ -176,9 +179,38 @@ public:
 		UE_LOG(LogTemp, Warning, TEXT("AFunctionActor::Xi_Implementation()"));
 	}
 
-	// Omicron
-	// Pi
-	// Rho
+	// Static Method
+	// - Blueprint node does not have an input pin for an AFunctionActor object
+	// - "Target is Function Actor" (blueprint node description)
+	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
+	static void Omicron()
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AFunctionActor::Omicron()"));
+	}
+
+	// Static Method, World Context Object
+	// - Blueprint node does not have an input pin for an AFunctionActor object
+	// - Blueprint node has an input pin for the world context object;  From the level blueprint, a reference to self may be passed.
+	UFUNCTION(BlueprintCallable, Category = "LearningUE4 | Functions")
+	static void Pi(UObject* WorldContextObject)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AFunctionActor::Pi()"));
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull);
+	}
+	
+	// Static Method, meta, World Context Object
+	// - Blueprint node does not have an input pin for an AFunctionActor object.
+	// - Blueprint node does not have an input pin for WorldContextObject.
+	// - https://docs.unrealengine.com/en-US/ProgrammingAndScripting/Blueprints/TechnicalGuide/Guidelines/index.html
+	// - https://answers.unrealengine.com/questions/468741/how-to-make-a-blueprint-derived-from-a-uobject-cla.html?sort=oldest
+	// - https://www.tomlooman.com/ue4-gameplay-framework/
+	UFUNCTION(BlueprintCallable, meta=(WorldContext=WorldContextObject), Category = "LearningUE4 | Functions")
+	static void Rho(UObject* WorldContextObject)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("AFunctionActor::Rho()"));
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull);
+	}
+	
 	// Sigma
 	// Tau
 	// Upsilon
